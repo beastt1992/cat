@@ -7,70 +7,84 @@
 <meta name="description" content="貓踏踏（Loafcat）Chrome 擴充功能的隱私權政策。Privacy policy for the Loafcat browser pet extension.">
 <style>
   :root{
-    --paper:#faf7f2; --ink:#221f1c; --dim:#6f6963; --line:#e2dbd1; --accent:#c07a4a; --soft:#f2ece3;
+    --cream:#fff6e9; --ink:#2b1e16; --dim:#8a6f5c; --orange:#f08a2e; --line:rgba(240,138,46,.28);
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{
-    margin:0; background:var(--paper); color:var(--ink);
-    font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    margin:0; position:relative; background:var(--cream); color:var(--ink); overflow-x:hidden;
+    font:16px/1.8 "Noto Sans TC","PingFang TC","Microsoft JhengHei",-apple-system,BlinkMacSystemFont,sans-serif;
     -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:720px;margin:0 auto;padding:0 24px 96px}
+  .bgA{position:fixed; inset:0; z-index:-2; background:
+    radial-gradient(700px 560px at 88% 2%, #ffd3a1 0%, transparent 62%),
+    radial-gradient(640px 560px at 2% 30%, #ffe0ee 0%, transparent 60%),
+    radial-gradient(820px 700px at 60% 98%, #d8f0ff 0%, transparent 62%),
+    linear-gradient(160deg,#fff8ee 0%, #ffeedd 55%, #ffe6d2 100%)}
+  .bgB{position:fixed; inset:0; z-index:-1; opacity:.08; pointer-events:none;
+    background:repeating-linear-gradient(-38deg,#f08a2e 0 14px, transparent 14px 46px)}
 
-  header{padding:56px 0 0;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .wrap{max-width:760px; margin:0 auto; padding:0 22px 96px}
+  a{color:var(--orange)}
+
+  /* 頁首 */
+  header{padding:52px 0 0; display:flex; gap:16px; align-items:center; flex-wrap:wrap}
   header .mark{
-    width:52px;height:52px;border-radius:14px;flex:0 0 52px;
-    background:var(--soft);border:1px solid var(--line);
-    display:grid;place-items:center;
+    width:60px; height:60px; border-radius:20px; flex:0 0 60px;
+    background:linear-gradient(140deg,#ffd0a3,#ffb27a);
+    display:grid; place-items:center; box-shadow:0 10px 22px rgba(150,90,40,.20);
   }
-  header .mark svg{width:30px;height:30px;fill:var(--accent)}
-  header h1{margin:0;font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.3}
-  header .sub{margin:2px 0 0;color:var(--dim);font-size:13.5px}
-  .langs{margin-left:auto;display:flex;gap:6px}
+  header .mark svg{width:34px; height:34px; fill:#fff8ee}
+  header h1{margin:0; font-size:26px; font-weight:900; letter-spacing:-.03em; line-height:1.25}
+  header .sub{margin:3px 0 0; color:var(--dim); font-size:14px; font-weight:600}
+  .langs{margin-left:auto; display:flex; gap:8px}
   .langs button{
-    padding:6px 13px;border-radius:999px;border:1px solid var(--line);
-    background:#fff;color:var(--dim);font:inherit;font-size:13px;cursor:pointer;
+    padding:9px 18px; border-radius:999px; border:0; background:#fff; color:var(--dim);
+    font:inherit; font-size:14px; font-weight:800; cursor:pointer;
+    box-shadow:0 6px 14px rgba(150,90,40,.12);
   }
-  .langs button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .langs button[aria-pressed=true]{background:var(--ink); color:#fff8ee}
 
   .lede{
-    margin:30px 0 0;padding:18px 20px;background:var(--soft);
-    border:1px solid var(--line);border-radius:14px;font-size:15px;line-height:1.7;
+    margin:30px 0 0; padding:22px 24px; background:#fff; border-radius:22px;
+    font-size:16px; line-height:1.8; box-shadow:0 12px 28px rgba(150,90,40,.12);
   }
-  .lede strong{color:var(--accent)}
+  .lede strong{color:var(--orange)}
 
-  h2{margin:44px 0 12px;font-size:17px;font-weight:700;letter-spacing:-.01em}
-  h2::before{content:"";display:block;width:26px;height:2px;background:var(--accent);margin-bottom:12px}
-  h3{margin:26px 0 8px;font-size:14.5px;font-weight:600}
+  h2{margin:52px 0 14px; font-size:24px; font-weight:900; letter-spacing:-.02em}
+  h2::before{content:""; display:block; width:52px; height:5px; border-radius:3px;
+    background:var(--orange); margin-bottom:14px}
+  h3{margin:28px 0 8px; font-size:17px; font-weight:800}
   p{margin:0 0 14px}
-  ul{margin:0 0 14px;padding-left:20px}
-  li{margin-bottom:6px}
-  code{background:var(--soft);border:1px solid var(--line);padding:1px 5px;border-radius:5px;font-size:13.5px}
+  ul{margin:0 0 14px; padding-left:22px}
+  li{margin-bottom:7px}
+  code{background:#fff; border:1px solid var(--line); padding:2px 7px; border-radius:7px; font-size:14px}
 
-  table{width:100%;border-collapse:collapse;margin:0 0 18px;font-size:14px}
-  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
-  th{font-weight:600;background:var(--soft);white-space:nowrap}
-  td:first-child{white-space:nowrap;font-weight:500}
-  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{width:100%; border-collapse:separate; border-spacing:0 10px; margin:0 0 18px; font-size:15px}
+  th,td{text-align:left; padding:14px 18px; vertical-align:top; background:#fff; line-height:1.7}
+  th{font-weight:900; white-space:nowrap; background:#ffe9d2}
+  th:first-child{border-radius:14px 0 0 14px} th:last-child{border-radius:0 14px 14px 0}
+  td:first-child{font-weight:800; border-radius:14px 0 0 14px}
+  td:last-child{color:var(--dim); border-radius:0 14px 14px 0}
+  td:only-child{border-radius:14px}
+  .scroll{overflow-x:auto; -webkit-overflow-scrolling:touch}
 
-  .no{list-style:none;padding:0;margin:0 0 14px}
-  .no li{position:relative;padding-left:26px;margin-bottom:7px}
+  .no{list-style:none; padding:0; margin:0 0 14px}
+  .no li{position:relative; padding-left:34px; margin-bottom:9px}
   .no li::before{
-    content:"✕";position:absolute;left:0;top:0;color:var(--accent);
-    font-size:13px;font-weight:700;
+    content:"✕"; position:absolute; left:0; top:2px; width:22px; height:22px; border-radius:50%;
+    background:var(--orange); color:#fff8ee; font-size:12px; font-weight:900;
+    display:grid; place-items:center;
   }
 
-  footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);color:var(--dim);font-size:13px}
-  footer a{color:var(--accent)}
-  [hidden]{display:none !important}
-  @media (max-width:520px){
-    header{padding-top:40px}
-    .langs{margin-left:0;width:100%}
-  }
+  footer{margin-top:64px; padding-top:26px; border-top:2px dashed var(--line);
+    color:var(--dim); font-size:14.5px; line-height:1.8}
+  footer a{font-weight:700}
 </style>
+<link rel="canonical" href="https://beastt1992.github.io/cat/privacy.html">
 </head>
 <body>
+<div class="bgA"></div><div class="bgB"></div>
 <div class="wrap">
 
   <header>
